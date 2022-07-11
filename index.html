@@ -13,6 +13,7 @@
             --header-bg-colour: rgb(228, 202, 255);
             --header-text-colour: rgb(57, 0, 117);
             --subtitle-text-colour: rgb(228, 202, 255);
+            --category-song-bg-colour: rgb(247, 240, 255);
 
         }
         @media (prefers-color-scheme: dark) {
@@ -32,31 +33,55 @@
             font-family: 'Poppins', sans-serif;
             background: var(--header-bg-colour);
             color: var(--header-text-colour);
+            
         }
-
         .header-title {
             text-align: center;
         }
         .home-container {
             font-family: 'Poppins', sans-serif;
             color: var(--header-text-colour);
-            margin-inline: 10vw;
+            margin-inline: 8vw;
         }
         .category-music-list {
+            background: var(--header-bg-colour);
             display: flex;
             overflow-x: auto;
+            padding: 15px 35px 15px 35px;
             margin-top: -5px;
         }
+        .category-title {
+            padding: 0 0 0 35px;
+        }
         .category-song {
-            background: var(--header-bg-colour);
+            background: var(--category-song-bg-colour);
             margin-right: 20px;
-            border-radius: 25px;
-            padding: 15px;
+            border-radius: 20px;
+            padding: 15px 15px 10px 15px;
+            filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.35));
+        }
+        .category-song:hover > .category-album-art-blur {
+            filter: blur(10px) contrast(2);
+            transition: 0.2s;
+            transition-timing-function: ease-out;
         }
         .category-album-art {
             width: 200px;
             height: 200px;
             border-radius: 25px;
+            position:absolute;
+            left:15px;
+            top:15px;
+            padding: 0 0 10px 0;
+        }
+        .category-album-art-blur {
+            width: 200px;
+            height: 200px;
+            border-radius: 25px;
+            padding: 0 0 10px 0;
+            filter: blur(0px) contrast(1.5);
+            transition: 0.2s;
+            transition-timing-function: ease-out;
         }
         
 
@@ -72,11 +97,13 @@
 
     <div class="home-container">
         <div class="home-category">
-            <h2>
+            <h2 class="category-title">
                 New music
             </h2>
             <div class="category-music-list" id="music-list">
+
                 <div class="category-song">
+                    <img class="category-album-art-blur" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <br>
                     title
@@ -84,6 +111,7 @@
                     artist
                 </div>
                 <div class="category-song">
+                    <img class="category-album-art-blur" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <br>
                     title
@@ -91,6 +119,7 @@
                     artist
                 </div>
                 <div class="category-song">
+                    <img class="category-album-art-blur" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <br>
                     title
