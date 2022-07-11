@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>openmusic - Home</title>
+    </head>
+    <style>
+        /* poppins font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+        /* light/dark mode colours */
+        :root {
+            --bg-colour: rgb(255, 255, 255);
+            --header-bg-colour: rgb(228, 202, 255);
+            --header-text-colour: rgb(57, 0, 117);
+            --subtitle-text-colour: rgb(228, 202, 255);
+
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-colour: hsl(0, 0%, 10%);
+                --header-bg-colour: rgb(71, 50, 93);
+                --header-text-colour: rgb(238, 222, 255);
+                --subtitle-text-colour: rgb(228, 202, 255);
+            }
+        }
+
+        body {
+            background-color: var(--bg-colour);
+        }
+
+        .header-div {
+            font-family: 'Poppins', sans-serif;
+            background: var(--header-bg-colour);
+            color: var(--header-text-colour);
+        }
+
+        .header-title {
+            text-align: center;
+        }
+        .home-container {
+            font-family: 'Poppins', sans-serif;
+            color: var(--header-text-colour);
+            margin-inline: 10vw;
+        }
+        .category-music-list {
+            display: flex;
+            overflow-x: auto;
+            margin-top: -5px;
+        }
+        .category-song {
+            background: var(--header-bg-colour);
+            margin-right: 20px;
+            border-radius: 25px;
+        }
+        .category-album-art {
+            width: 200px;
+            height: 200px;
+            border-radius: 25px;
+        }
+        
+
+    </style>
+
+    <header>
+        <div class="header-div">
+            <h1 class="header-title">
+                openmusic
+            </h1>
+        </div>
+    </header>
+
+    <div class="home-container">
+        <div class="home-category">
+            <h2>
+                New music
+            </h2>
+            <div class="category-music-list" id="music-list">
+                <div class="category-song">
+                    <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
+                    <br>
+                    title
+                    <br>
+                    artist
+                </div>
+                <div class="category-song">
+                    <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
+                    <br>
+                    title
+                    <br>
+                    artist
+                </div>
+                <div class="category-song">
+                    <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
+                    <br>
+                    title
+                    <br>
+                    artist
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</html>
