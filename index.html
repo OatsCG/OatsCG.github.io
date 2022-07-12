@@ -1,8 +1,9 @@
 <html>
     <head>
         <title>openmusic - Home</title>
-        <meta name="viewport", content="width=device-width, initial-scale=1">
+        <meta name="viewport", content="width=device-width, initial-scale=1"></meta>
     </head>
+    
     <style>
         /* poppins font */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
@@ -51,7 +52,6 @@
             margin-inline: 8vw;
         }
         .category-music-list {
-            //background:  rgb(118, 201, 162);
             display: flex;
             overflow-x: auto;
             padding: 15px 35px 15px 35px;
@@ -68,6 +68,7 @@
             border-radius: 20px;
             padding: 15px 15px 10px 15px;
             filter: drop-shadow(0px 0px 8px var(--category-song-shadow-colour));
+            position: relative;
         }
         @media (hover: hover) {
             .category-song:hover > .category-album-art-blur {
@@ -80,10 +81,10 @@
             width: 200px;
             height: 200px;
             border-radius: 25px;
-            position:absolute;
-            left:15px;
-            top:15px;
             padding: 0 0 10px 0;
+            position: absolute;
+            left:15px;
+            top: 15px;
         }
         .category-album-art-blur {
             width: 200px;
