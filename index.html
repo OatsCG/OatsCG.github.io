@@ -6,7 +6,7 @@
     
     <style>
         /* poppins font */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
         /* light/dark mode colours */
         :root {
@@ -19,6 +19,8 @@
             --category-song-shadow-colour: rgba(0, 0, 0, 0.35);
             --category-art-blur-brightness: 1;
             --category-art-blur-contrast: 2;
+            --category-side-blur-colour-0: rgba(255, 255, 255, 0);
+            --category-side-blur-colour-1: rgba(255, 255, 255, 1);
 
         }
         @media (prefers-color-scheme: dark) {
@@ -32,6 +34,8 @@
                 --category-song-shadow-colour: rgba(70, 70, 70, 0.35);
                 --category-art-blur-brightness: 1.5;
                 --category-art-blur-contrast: 0.8;
+                --category-side-blur-colour-0: rgba(26, 26, 26, 0);
+                --category-side-blur-colour-1: rgba(26, 26, 26, 1);
             }
         }
 
@@ -53,8 +57,10 @@
             color: var(--subtitle-text-colour);
             margin-inline: 8vw;
         }
+        .home-category {
+            position: relative;
+        }
         .category-music-list {
-            //background:red;
             display: flex;
             position: relative;
             overflow-x: auto;
@@ -68,11 +74,29 @@
         .category-song {
             background: var(--category-song-bg-colour);
             color: var(--category-song-text-colour);
+            font-weight:500;
             margin-right: 20px;
             border-radius: 20px;
             padding: 15px 15px 10px 15px;
             filter: drop-shadow(0px 0px 8px var(--category-song-shadow-colour));
-            position: relative;
+            width: 180px;
+            white-space: nowrap;
+            transition: 0.2s;
+            transition-delay:0.2s;
+            transition-timing-function: ease-in-out;
+        }
+        .category-song-artist-text {
+            font-weight:400;
+            width: inherit;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .category-song-title-text {
+            font-weight:600;
+            position:absolute;
+            width: inherit;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         @media (hover:hover) and (pointer: fine) {
             .category-song:hover > .category-album-art-blur {
@@ -80,14 +104,22 @@
                 transition: 0.2s;
                 transition-timing-function: ease-in-out;
             }
+            .category-song:hover {
+                width: 300px;
+                transition: 0.2s;
+                transition-delay:0.3s;
+                transition-timing-function: ease-in-out;
+            }
         }
         .category-side-graient {
             background:rgba(200, 0, 0, 0.4);
+            background: linear-gradient(to right, var(--category-side-blur-colour-1), var(--category-side-blur-colour-0) 35px, var(--category-side-blur-colour-0) calc(100% - 35px), var(--category-side-blur-colour-1));
             position:absolute;
             width: 100%;
-            height: 100%;
-            left: -15px;
-            top: -15px;
+            height: 95%;
+            left: 0px;
+            top: 35px;
+            pointer-events: none;
         }
         .category-album-art {
             width: 180px;
@@ -129,9 +161,13 @@
                     <img class="category-album-art-blur" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <br>
-                    title
+                    <span class="category-song-title-text">
+                        Clouds (Audio) ft. Langston Bristol, Curren$y
+                    </span>
                     <br>
-                    artist
+                    <span class="category-song-artist-text">
+                        Logic
+                    </span>
                 </div>
                 <div class="category-song">
                     <img class="category-album-art-blur" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
@@ -139,7 +175,9 @@
                     <br>
                     title
                     <br>
-                    artist
+                    <span class="category-song-artist-text">
+                        artist
+                    </span>
                 </div>
                 <div class="category-song">
                     <img class="category-album-art-blur" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
@@ -147,10 +185,12 @@
                     <br>
                     title
                     <br>
-                    artist
+                    <span class="category-song-artist-text">
+                        artist
+                    </span>
                 </div>
-                <div class="category-side-graient">
-                </div>
+            </div>
+            <div class="category-side-graient">
             </div>
         </div>
     </div>
