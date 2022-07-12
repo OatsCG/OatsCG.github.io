@@ -18,6 +18,7 @@
             --category-song-text-colour: rgb(19, 16, 23);
             --category-song-shadow-colour: rgba(0, 0, 0, 0.35);
             --category-art-blur-brightness: 1;
+            --category-art-blur-contrast: 2;
 
         }
         @media (prefers-color-scheme: dark) {
@@ -29,7 +30,8 @@
                 --category-song-bg-colour: rgb(62, 59, 65);
                 --category-song-text-colour: rgb(255, 255, 255);
                 --category-song-shadow-colour: rgba(70, 70, 70, 0.35);
-                --category-art-blur-brightness: 2;
+                --category-art-blur-brightness: 1.5;
+                --category-art-blur-contrast: 0.8;
             }
         }
 
@@ -70,16 +72,15 @@
             filter: drop-shadow(0px 0px 8px var(--category-song-shadow-colour));
             position: relative;
         }
-        @media (hover: hover) {
-            .category-song:hover > .category-album-art-blur {
-                filter: contrast(2) brightness(var(--category-art-blur-brightness)) blur(10px);
-                transition: 0.2s;
-                transition-timing-function: ease-out;
-            }
+        .category-song:hover > .category-album-art-blur {
+            filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
+            transition: 0.2s;
+            transition-timing-function: ease-in-out;
         }
+
         .category-album-art {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 25px;
             padding: 0 0 10px 0;
             position: absolute;
@@ -87,13 +88,13 @@
             top: 15px;
         }
         .category-album-art-blur {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 25px;
             padding: 0 0 10px 0;
-            filter: blur(0px) contrast(1.5);
+            filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(0px);
             transition: 0.2s;
-            transition-timing-function: ease-out;
+            transition-timing-function: ease-in-out;
         }
         
 
