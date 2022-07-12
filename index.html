@@ -54,10 +54,12 @@
             margin-inline: 8vw;
         }
         .category-music-list {
+            //background:red;
             display: flex;
+            position: relative;
             overflow-x: auto;
             padding: 15px 35px 15px 35px;
-            margin-top: -5px;
+            margin-top: -20px;
         }
         .category-title {
             color: var(--header-text-colour);
@@ -72,12 +74,21 @@
             filter: drop-shadow(0px 0px 8px var(--category-song-shadow-colour));
             position: relative;
         }
-        .category-song:hover > .category-album-art-blur {
-            filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
-            transition: 0.2s;
-            transition-timing-function: ease-in-out;
+        @media (hover:hover) and (pointer: fine) {
+            .category-song:hover > .category-album-art-blur {
+                filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
+                transition: 0.2s;
+                transition-timing-function: ease-in-out;
+            }
         }
-
+        .category-side-graient {
+            background:rgba(200, 0, 0, 0.4);
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            left: -15px;
+            top: -15px;
+        }
         .category-album-art {
             width: 180px;
             height: 180px;
@@ -96,10 +107,10 @@
             transition: 0.2s;
             transition-timing-function: ease-in-out;
         }
-        
 
     </style>
 
+    <script src="generatecategories.js"> </script>
     <header>
         <div class="header-div">
             <h1 class="header-title">
@@ -114,7 +125,6 @@
                 New music
             </h2>
             <div class="category-music-list" id="music-list">
-
                 <div class="category-song">
                     <img class="category-album-art-blur" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
                     <img class="category-album-art" src="https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/hcjrqlvc6dfhpjxob9nt/cudi">
@@ -138,6 +148,8 @@
                     title
                     <br>
                     artist
+                </div>
+                <div class="category-side-graient">
                 </div>
             </div>
         </div>
