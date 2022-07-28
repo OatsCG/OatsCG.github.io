@@ -57,6 +57,7 @@
         }
         .header-title {
             text-align: center;
+            margin-top: 0;
         }
         .home-container {
             font-family: 'Poppins', sans-serif;
@@ -84,8 +85,9 @@
             margin-right: 20px;
             border-radius: 20px;
             padding: 15px 15px 10px 15px;
-            filter: drop-shadow(0px 0px 8px var(--category-song-shadow-colour));
+            box-shadow: 0px 0px 8px var(--category-song-shadow-colour);
             width: 180px;
+            position:relative;
             display: grid;
             white-space: nowrap;
             transition: 0.2s;
@@ -105,7 +107,7 @@
             text-overflow: ellipsis;
         }
         @media (hover:hover) and (pointer: fine) {
-            .category-song:hover > .category-album-art-blur {
+            .category-album-art:hover .category-album-art-blur {
                 filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
                 transition: 0.2s;
                 transition-timing-function: ease-in-out;
@@ -128,9 +130,9 @@
             background:rgba(200, 0, 0, 0.4);
             background: linear-gradient(to right, var(--category-side-blur-colour-1), var(--category-side-blur-colour-0) calc(25px), var(--category-side-blur-colour-0) calc((100% - 25px)), var(--category-side-blur-colour-1));
             position:absolute;
-            width: 100%;
+            width: 101%;
             height: 95%;
-            left: 0px;
+            left: -0.5%;
             top: 35px;
             pointer-events: none;
         }
