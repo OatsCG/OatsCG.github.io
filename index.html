@@ -107,7 +107,7 @@
             text-overflow: ellipsis;
         }
         @media (hover:hover) and (pointer: fine) {
-            .category-album-art:hover .category-album-art-blur {
+            .category-song:hover > .category-album-art-blur {
                 filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
                 transition: 0.2s;
                 transition-timing-function: ease-in-out;
@@ -150,7 +150,8 @@
             height: 180px;
             border-radius: 25px;
             padding: 0 0 10px 0;
-            filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(0px);
+            //filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(0px);
+            filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
             transition: 0.15s;
             transition-timing-function: ease-in-out;
         }
