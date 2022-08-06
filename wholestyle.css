@@ -163,3 +163,14 @@ body {
     transition-delay:0.15s;
     transition-timing-function: ease-in-out;
 }
+
+
+/* ALBUM VIEW */
+.album-container {
+    font-family: 'Poppins', sans-serif;
+    color: var(--subtitle-text-colour);
+    margin-inline: calc(6vw - 20px);
+    margin-top: 70px;
+    display: none;
+}
+
