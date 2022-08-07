@@ -42,7 +42,7 @@ function newalbumcategory(title, albumsinfo) {
 
 function clickedonalbum(albumid) {
     //console.log(albumid)
-    window.open("album.html?q=" + albumid, "_self")
+    window.open("album.html?q=" + albumid)
 }
 
 
