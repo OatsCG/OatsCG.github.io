@@ -16,6 +16,7 @@
     --category-side-blur-colour-1: rgba(255, 255, 255, 1);
     --category-play-button-colour: rgb(228, 202, 255);
     --track-list-song-colour: rgb(250, 246, 255);
+    --category-song-length-colour: hsl(266, 20%, 33%);
 
 }
 @media (prefers-color-scheme: dark) {
@@ -33,6 +34,7 @@
         --category-side-blur-colour-1: rgba(26, 26, 26, 1);
         --category-play-button-colour: rgb(135, 127, 144);
         --track-list-song-colour: hsl(270, 5%, 35%);
+        --category-song-length-colour: hsl(267, 53%, 93%);
     }
 }
 
@@ -199,27 +201,26 @@ body {
     color: var(--category-song-text-colour);
 }
 .album-view-art-container {
-    
     font-weight:500;
     padding: 15px 15px 10px 15px;
-    width: 180px;
+    width: 280px;
     position:relative;
     display: grid;
     white-space: nowrap;
     margin: auto;
 }
 .album-view-art {
-    width: 180px;
-    height: 180px;
-    border-radius: 25px;
+    width: 280px;
+    height: 280px;
+    border-radius: 10px;
     position: absolute;
     left:15px;
     top: 15px;
 }
 .album-view-art-blur {
-    width: 180px;
-    height: 180px;
-    border-radius: 25px;
+    width: 280px;
+    height: 280px;
+    border-radius: 10px;
     filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
 }
 .album-view-title {
@@ -269,6 +270,7 @@ td:last-child { border-radius: 0 7px 7px 0;}
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 6px;
+    line-height: 135%;
 }
 .track-list-title {
     font-weight: 500;
@@ -276,7 +278,11 @@ td:last-child { border-radius: 0 7px 7px 0;}
 .track-list-artists {
     font-weight: 400;
 }
-
+.track-list-length {
+    font-size: 90%;
+    color: var(--category-song-length-colour);
+    font-weight: 400;
+}
 .track-list-symbol-container {
     width: 5%;
     text-align: right;
