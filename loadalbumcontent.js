@@ -3,6 +3,7 @@ console.log(queryalbumid);
 writecontent(queryalbumid);
 
 
+
 function writecontent(id) {
 
 }
