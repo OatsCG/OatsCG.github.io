@@ -41,6 +41,10 @@ function newalbumcategory(title, albumsinfo) {
     document.getElementById("home-container").innerHTML += categorycontainer;
 }
 
+window.addEventListener("animationend", function(){
+    console.log("Page in focus")
+})
+
 
 function clickedonalbum(albumid) {
     //console.log(albumid)
@@ -48,12 +52,13 @@ function clickedonalbum(albumid) {
     document.getElementById("home-container").offsetHeight;
     document.getElementById("home-container").style["animation"] = "example 1s";
     setTimeout(function() {
-        document.getElementById("home-container").style["animation-play-state"]= "paused";
-        document.getElementById("home-container").style["animation"] = "none !important";
-        document.getElementById("home-container").offsetHeight;
-        document.getElementById("home-container").style["transform"]= "translate(0%, 0%)";
-    }, 900)
-    setTimeout(function() {window.open("album.html?q=" + albumid, "_self")}, 900)
+        //document.getElementById("home-container").style["animation-play-state"]= "paused";
+        document.getElementById("home-container").style["animation-name"] = "none";
+        //document.getElementById("home-container").offsetHeight;
+        window.open("album.html?q=" + albumid, "_self")
+        //document.getElementById("home-container").style["transform"]= "translate(0%, 0%)";
+    }, 1000)
+    setTimeout(function() {}, 900)
     
 }
 
