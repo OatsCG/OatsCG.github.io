@@ -46,12 +46,16 @@ function clickedonalbum(albumid) {
     //console.log(albumid)
     document.getElementById("home-container").style["animation"] = "none";
     document.getElementById("home-container").offsetHeight;
-    document.getElementById("home-container").style["animation"] = "example 0.4s";
-    setTimeout(function() {window.open("album.html?q=" + albumid, "_self")}, 450)
+    document.getElementById("home-container").style["animation"] = "example 1s";
+    setTimeout(function() {
+        document.getElementById("home-container").style["animation-play-state"]= "paused";
+        document.getElementById("home-container").style["animation"] = "none !important";
+        document.getElementById("home-container").offsetHeight;
+        document.getElementById("home-container").style["transform"]= "translate(0%, 0%)";
+    }, 900)
+    setTimeout(function() {window.open("album.html?q=" + albumid, "_self")}, 900)
     
 }
-
-
 
 
 
