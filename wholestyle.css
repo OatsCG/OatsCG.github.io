@@ -69,11 +69,12 @@ body {
     margin-top: 70px;
     position: relative;
     transform: translate(0%, 0%);
-    opacity: 1;
+    opacity: 0;
     transition: opacity 0.3s linear 0.1s;
     animation-timing-function: ease-out;
 }
 @keyframes example {
+    0% {transform: translate(0%, 0%);opacity: 1;}
     100% {transform: translate(-105%, 0%);opacity: 0;}
 }
 

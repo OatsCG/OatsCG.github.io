@@ -1,4 +1,7 @@
-console.log("haha")
+window.addEventListener('load', function () {
+    this.document.getElementById("home-container").style.opacity = 1;
+    console.log("haha111")
+})
 
 function newalbumcategory(title, albumsinfo) {
 
@@ -41,10 +44,6 @@ function newalbumcategory(title, albumsinfo) {
     document.getElementById("home-container").innerHTML += categorycontainer;
 }
 
-window.addEventListener("animationend", function(){
-    //console.log("Page in focus")
-})
-
 
 function clickedonalbum(albumid) {
     //console.log(albumid)
@@ -65,7 +64,7 @@ function clickedonalbum(albumid) {
 
 setInterval(function() {
     history.pushState(null,  document.title, location.href);
-}, 50)
+}, 100)
 
 newalbumcategory("title title", [
     [123, "albumtitle", "logic", "https://images.squarespace-cdn.com/content/v1/53b6eb62e4b06e0feb2d8e86/1557342400705-0MBVEXD53MNZZCPDW68F/SamSpratt_Logic_ConfessionsOfADangerousMind_album_artwork.jpg?format=1500w"],
