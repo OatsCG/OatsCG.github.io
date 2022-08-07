@@ -67,6 +67,10 @@ body {
     color: var(--subtitle-text-colour);
     margin-inline: calc(6vw - 20px);
     margin-top: 70px;
+    position: relative;
+    left: 0%;
+    transition: 0.4s;
+    transition-timing-function: ease-out;
 }
 .home-category {
     position: relative;
@@ -179,6 +183,8 @@ body {
     color: var(--subtitle-text-colour);
     margin-inline: calc(6vw - 20px);
     margin-top: 70px;
+    opacity: 0;
+    transition: 0.3s;
 }
 .album-view-header-container {
     display: grid;

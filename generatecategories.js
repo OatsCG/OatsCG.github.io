@@ -42,7 +42,9 @@ function newalbumcategory(title, albumsinfo) {
 
 function clickedonalbum(albumid) {
     //console.log(albumid)
-    window.open("album.html?q=" + albumid, "_self")
+    document.getElementById("home-container").style.left = "-105%";
+    setTimeout(function() {window.open("album.html?q=" + albumid, "_self")}, 400)
+    
 }
 
 

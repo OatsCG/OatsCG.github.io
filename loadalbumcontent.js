@@ -6,3 +6,7 @@ writecontent(queryalbumid);
 function writecontent(id) {
 
 }
+
+window.addEventListener('load', function () {
+    this.document.getElementById("album-view-container").style.opacity = 1;
+})
