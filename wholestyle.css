@@ -68,12 +68,11 @@ body {
     margin-inline: calc(6vw - 20px);
     margin-top: 70px;
     position: relative;
-    left: 0%;
+    transform: translate(0%, 0%);
     //transition-timing-function: ease-out;
 }
 @keyframes example {
-    0%   {left: 0%;}
-    100% {left: -105%;}
+    100% {transform: translate(-105%, 0%);}
 }
 
 
