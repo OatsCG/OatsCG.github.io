@@ -211,17 +211,19 @@ body {
 }
 .album-view-title {
     color: var(--category-song-text-colour);
-
+    text-align: center;
     margin: auto;
 }
 .album-view-artist {
     color: var(--category-song-text-colour);
     margin: auto;
+    text-align: center;
     font-weight: 500;
 }
 .album-view-features {
     color: var(--category-song-text-colour);
     margin: auto;
+    text-align: center;
     font-weight: 500;
 }
 table {
@@ -261,6 +263,7 @@ td:last-child { border-radius: 0 7px 7px 0;}
 .track-list-artists {
     font-weight: 400;
 }
+
 .track-list-symbol-container {
     width: 5%;
     text-align: right;
