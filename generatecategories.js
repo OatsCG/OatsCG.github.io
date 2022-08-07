@@ -41,7 +41,7 @@ function newalbumcategory(title, albumsinfo) {
 
 
 function clickedonalbum(albumid) {
-    console.log(albumid)
+    //console.log(albumid)
     window.open("album.html?q=" + albumid, "_self")
 }
 
