@@ -57,7 +57,7 @@ function clickedonalbum(albumid) {
         document.getElementById("home-container").style["animation-name"] = "none";
         document.getElementById("home-container").style.opacity = "1";
         
-        }, 10);
+        }, 100);
     }, 400)
     
 }
