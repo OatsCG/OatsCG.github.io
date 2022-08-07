@@ -5,9 +5,9 @@ function newalbumcategory(title, albumsinfo) {
         //albumsinfo [id, albumname, artistname, albumartlink]
         var albumcontainer = `
         <div class="category-song">
-            <img class="category-album-art-blur" onload="fadeIn(this)" src="${albumsinfo[a][3]}">
+            <img class="category-album-art-blur" src="${albumsinfo[a][3]}">
             <a href="javascript:clickedonalbum(${albumsinfo[a][0]});">
-                <img class="category-album-art" onload="fadeIn(this)" src="${albumsinfo[a][3]}">
+                <img class="category-album-art" src="${albumsinfo[a][3]}">
             </a>
             <span class="category-song-title-text">
                 ${albumsinfo[a][1]}
@@ -41,14 +41,11 @@ function newalbumcategory(title, albumsinfo) {
 
 
 function clickedonalbum(albumid) {
-    $(document.getElementById("home-container")).fadeOut(300);
-    $(document.getElementById("album-container")).delay(300).fadeIn(300);
+    console.log(albumid)
+    window.open("album.html?q=" + albumid, "_self")
 }
 
 
-function fadeIn(obj) {
-    //$(obj).fadeOut(1000);
-}
 
 
 

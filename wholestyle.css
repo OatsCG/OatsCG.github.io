@@ -166,11 +166,37 @@ body {
 
 
 /* ALBUM VIEW */
-.album-container {
+.album-view-container {
     font-family: 'Poppins', sans-serif;
     color: var(--subtitle-text-colour);
     margin-inline: calc(6vw - 20px);
     margin-top: 70px;
-    display: none;
 }
-
+.album-view-art-container {
+    background: var(--category-song-bg-colour);
+    color: var(--category-song-text-colour);
+    font-weight:500;
+    margin-right: 20px;
+    padding: 15px 15px 10px 15px;
+    box-shadow: 0px 0px 8px var(--category-song-shadow-colour);
+    width: 180px;
+    position:relative;
+    display: grid;
+    white-space: nowrap;
+}
+.album-view-art {
+    width: 180px;
+    height: 180px;
+    border-radius: 25px;
+    padding: 0 0 10px 0;
+    position: absolute;
+    left:15px;
+    top: 15px;
+}
+.album-view-art-blur {
+    width: 180px;
+    height: 180px;
+    border-radius: 25px;
+    padding: 0 0 10px 0;
+    filter: contrast(var(--category-art-blur-contrast)) brightness(var(--category-art-blur-brightness)) blur(10px);
+}
