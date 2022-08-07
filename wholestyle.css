@@ -56,6 +56,12 @@ body {
     text-align: center;
     margin-top: 0;
 }
+.header-back-button {
+    position:absolute;
+    margin: 0;
+    top: 8px;
+    left: 15px
+}
 .home-container {
     font-family: 'Poppins', sans-serif;
     color: var(--subtitle-text-colour);
