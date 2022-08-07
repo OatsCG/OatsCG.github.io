@@ -1,3 +1,5 @@
+console.log("haha")
+
 function newalbumcategory(title, albumsinfo) {
 
     var albums = [];
@@ -42,7 +44,10 @@ function newalbumcategory(title, albumsinfo) {
 
 function clickedonalbum(albumid) {
     //console.log(albumid)
-    document.getElementById("home-container").style.left = "-105%";
+    //document.getElementById("home-container").style.left = "-105%";
+    document.getElementById("home-container").style["-webkit-animation"] = "none";
+    document.getElementById("home-container").offsetHeight;
+    document.getElementById("home-container").style["-webkit-animation"] = "example 0.4s";
     setTimeout(function() {window.open("album.html?q=" + albumid, "_self")}, 400)
     
 }
