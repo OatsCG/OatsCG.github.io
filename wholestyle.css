@@ -16,25 +16,25 @@
     --category-side-blur-colour-1: rgba(255, 255, 255, 1);
     --category-play-button-colour: rgb(228, 202, 255);
     --track-list-song-colour: rgb(250, 246, 255);
-    --category-song-length-colour: hsl(266, 20%, 33%);
+    --category-song-length-colour: rgb(82, 67, 101);
 
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-colour: hsl(0, 0%, 10%);
+        --bg-colour: rgb(26, 26, 26);
         --header-bg-colour: rgb(71, 50, 93);
         --header-text-colour: rgb(238, 222, 255);
         --subtitle-text-colour: rgb(19, 16, 23);
         --category-song-bg-colour: rgb(62, 59, 65);
         --category-song-text-colour: rgb(255, 255, 255);
-        --category-song-shadow-colour: hsla(0, 0%, 40%, 0.35);
+        --category-song-shadow-colour: rgba(102, 102, 102, 0.35);
         --category-art-blur-brightness: 1.5;
         --category-art-blur-contrast: 0.8;
         --category-side-blur-colour-0: rgba(26, 26, 26, 0);
         --category-side-blur-colour-1: rgba(26, 26, 26, 1);
         --category-play-button-colour: rgb(135, 127, 144);
-        --track-list-song-colour: hsl(270, 5%, 35%);
-        --category-song-length-colour: hsl(267, 53%, 93%);
+        --track-list-song-colour: rgb(89, 85, 94);
+        --category-song-length-colour: rgb(236, 228, 247);
     }
 }
 

@@ -18,8 +18,8 @@ function writecontent(datadict) {
     arturl = `https://coverartarchive.org/release/${datadict.artworkid}`
     d = httpGet(arturl)
     console.log(d.images[0].image)
-    document.getElementById("album-view-art").src = d.images[0].image;
-    document.getElementById("album-view-art-blur").src = d.images[0].image;
+    document.getElementById("album-view-art").src = d.images[0].image.replace(".jpg", "-500.jpg");
+    document.getElementById("album-view-art-blur").src = d.images[0].image.replace(".jpg", "-500.jpg");
     document.getElementById("album-view-title").innerHTML = datadict.name;
     document.getElementById("album-view-artist").innerHTML = datadict.artist;
     document.getElementById("album-view-features").innerHTML = datadict.features.join(", ");
