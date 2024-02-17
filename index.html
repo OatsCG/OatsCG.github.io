@@ -50,7 +50,7 @@
             transform: translateY(-70%);
             opacity: 0.9;
             margin: 0;
-            font-size: 100px;
+            font-size: 8vw;
             z-index: 2;
         }
         .subheader {
@@ -58,13 +58,13 @@
             width: 100%;
             top: calc(45% + 60px);
             left: 0;
-            font-size: 40px;
+            font-size: 3vw;
             font-weight: bold;
             opacity: 0.8;
             z-index: 2;
         }
         .subsubheader {
-            font-size: 30px;
+            font-size: 24px;
             font-weight: normal;
             opacity: 0.8;
         }
@@ -74,6 +74,9 @@
             object-fit: cover;
             position: relative;
             z-index: 1;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
         .overlay {
             position: absolute;
@@ -89,31 +92,31 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            padding: 20px 0;
+            padding: 20px 0 0 0;
         }
         .image-group img.icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 20px;
+            width: 15vh;
+            height: 15vh;
+            border-radius: 3vh;
             box-shadow: 0px 0px 80px #c29fe058;
         }
         .image-group img.dlapp {
-            width: 250px;
+            width: 26vh;
             opacity: 0.9;
             height: auto;
         }
         .content {
-            padding: 20px 200px;
-            font-size: 20px;
+            padding: 1vh 5vw;
+            font-size: 18px;
             background-color: black;
         }
         .triangle {
             position: absolute;
             top: 50%;
-            transform: translate(-295px, calc(-23px - 50%));
+            transform: translate(-24.6vw, calc(-2vw - 50%));
             width: auto;
-            height: 45px;
-            opacity: 1.8;
+            height: 4.5vw;
+            opacity: 1;
             filter: saturate(10) brightness(1.1) hue-rotate(320deg);
             z-index: 3;
         }
