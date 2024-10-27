@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        #instruction {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Styling for the video, canvas, and error message */
+        .video-container {
+            position: relative;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: 90vw;
+            max-width: 90vh;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 5px;
+            box-sizing: border-box;
+            display: none;
+        }
+
+        .qr-container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: 90vw;
+            max-width: 90vh;
+            box-sizing: border-box;
+            border-radius: 5px;
+            display: none;
+            position: relative;
+        }
+
+        #overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: auto;
+            max-width: 70%;
+            max-height: 70%;
+            aspect-ratio: 1 / 1;
+            transform: translate(-50%, -50%); /* Center the overlay */
+            pointer-events: none;
+            object-fit: contain;
+            -webkit-filter: drop-shadow(0px 0px 5px #222);
+            filter: drop-shadow(0px 0px 10px #22222277);
+        }
+
+
+        .error-message {
+            color: red;
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Progress bar styling */
+        .progress-bar-container {
+            width: 100%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 14px 14px 0 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background-image: linear-gradient(to right, orange, coral);
+            transition: width 10s ease-out;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script> <!-- QRCode.js Library -->
+</head>
+
+<body>
+    <div>
+        <h1>LiWay</h1>
+    </div>
+    <p id="instruction">Scan a friend's E-Ticket to clone it.</p>
+    <button id="startCameraButton" onclick="startCamera()">Start Camera</button>
+
+    <!-- Video container with overlay image as a sibling to the video -->
+    <div class="video-container">
+        <video id="video"></video>
+        <img id="overlay" src="data:image/png;base64,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" alt="Camera Focal Overlay">
+    </div>
+
+    <div class="qr-container" id="qrContainer">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <canvas id="qrCanvas"></canvas>
+    </div>
+    <p id="errorMessage" class="error-message">Invalid QR Code. Please scan again.</p>
+
+    <script>
+        let qrInterval;
+        let decodedString = ""; // Stores the decoded QR string for generating the new QR code
+
+        async function startCamera() {
+            const video = document.getElementById("video");
+            const qrContainer = document.getElementById("qrContainer");
+            const errorMessage = document.getElementById("errorMessage");
+            const instruction = document.getElementById("instruction");
+
+            // Stop the current QR generation loop if active
+            if (qrInterval) {
+                clearInterval(qrInterval);
+                qrInterval = null;
+            }
+
+            // Hide the QR container, error message, and instruction, show the video for a new scan
+            qrContainer.style.display = "none";
+            errorMessage.style.display = "none";
+            instruction.style.display = "block";
+            video.style.display = "block";
+
+            // Restart the camera stream and scan for new QR codes
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "environment"
+                }
+            });
+            video.srcObject = stream;
+            video.setAttribute("playsinline", true); // Required for iOS
+            await video.play();
+
+            const barcodeDetector = new BarcodeDetector({
+                formats: ['qr_code']
+            });
+
+            // Scan for QR codes at regular intervals
+            const scan = setInterval(async () => {
+                try {
+                    const barcodes = await barcodeDetector.detect(video);
+                    if (barcodes.length > 0) {
+                        decodedString = barcodes[0].rawValue;
+                        console.log("QR Code detected:", decodedString);
+                        clearInterval(scan); // Stop scanning once a QR code is detected
+                        video.srcObject.getTracks().forEach(track => track.stop()); // Stop the camera
+                        video.style.display = "none"; // Hide the video element
+                        instruction.style.display = "none"; // Hide the instruction
+
+                        // Verify the QR code
+                        if (verifyQRCode(decodedString)) {
+                            // Show the QR container and start the QR generation loop
+                            qrContainer.style.display = "block";
+                            startGenerateQRLoop(decodedString);
+                        } else {
+                            // Show an error message if verification fails
+                            errorMessage.style.display = "block";
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error detecting QR code:", error);
+                }
+            }, 500);
+        }
+
+        function startGenerateQRLoop(decodedString) {
+            // Start the QR generation loop on the canvas using the latest decoded string
+            newQRCode(decodedString);
+            resetProgressBar();
+            qrInterval = setInterval(() => {
+                newQRCode(decodedString);
+                resetProgressBar();
+            }, 10000);
+        }
+
+        function newQRCode(text) {
+            const qrData = generateQR(text); // Generate QR matrix from the provided text
+            const canvas = document.getElementById("qrCanvas");
+            const context = canvas.getContext("2d");
+
+            // Set canvas dimensions to match the 90vw/90vh square
+            const size = Math.min(window.innerWidth, window.innerHeight) * 0.9;
+            canvas.width = size;
+            canvas.height = size;
+
+            // Calculate cell size based on QR data array dimensions
+            const cellSize = size / qrData.length;
+
+            // Draw QR code from 2D array
+            qrData.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    context.fillStyle = cell === 1 ? "#000" : "#fff";
+                    context.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                });
+            });
+        }
+
+        function generateQR(text) {
+            // Separate the components by "|"
+            const parts = text.split('|');
+
+            // Ensure we have exactly 3 parts (should already be validated, but for safety)
+            if (parts.length !== 3) {
+                console.error("Invalid input format: Expected 3 parts separated by '|'");
+                return null;
+            }
+
+            // Replace the third component with the current date and time in ISO 8601 format (UTC)
+            parts[2] = new Date().toISOString();
+
+            // Reconstruct the string with the updated timestamp
+            const updatedText = parts.join('|');
+
+            // Proceed with generating the QR code data as a matrix
+            const qr = new QRCode(document.createElement('div'), {
+                text: updatedText,
+                width: 256,
+                height: 256,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Get the matrix data from the QR code's modules
+            const qrMatrix = qr._oQRCode.modules;
+            return qrMatrix.map(row => row.map(cell => (cell ? 1 : 0)));
+        }
+
+        function resetProgressBar() {
+            const progressBar = document.getElementById("progressBar");
+            // Reset progress bar width to 0% and then start the transition to 100% over 10 seconds
+            progressBar.style.transition = "none"; // Disable transition for immediate reset
+            progressBar.style.width = "0%";
+            setTimeout(() => {
+                progressBar.style.transition = "width 10s ease-out"; // Re-enable transition
+                progressBar.style.width = "100%";
+            }, 50); // Small delay to allow reset before starting transition
+        }
+
+        function verifyQRCode(decodedString) {
+            // Split the string by "|"
+            const parts = decodedString.split('|');
+
+            // Check that there are exactly 3 parts
+            if (parts.length !== 3) {
+                console.error("Invalid QR Code format: Expected 3 parts separated by '|'");
+                return false;
+            }
+
+            // Validate timestamps (second and third parts)
+            const timestamp1 = parts[1];
+            const timestamp2 = parts[2];
+
+            if (!isValidTimestamp(timestamp1) || !isValidTimestamp(timestamp2)) {
+                console.error("Invalid timestamp format in QR Code");
+                return false;
+            }
+
+            // If all checks pass, the QR code is considered valid
+            return true;
+        }
+
+        // Helper function to check if a string is a valid ISO 8601 timestamp
+        function isValidTimestamp(timestamp) {
+            // Validate the format with Date parsing
+            const date = new Date(timestamp);
+            return !isNaN(date.getTime()) && timestamp === date.toISOString();
+        }
+    </script>
+</body>
+
+</html>
